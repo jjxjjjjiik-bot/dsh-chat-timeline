@@ -1,0 +1,4 @@
+# dsh-chat-timeline bundle patch: load the host half and expose its client half.
+- insert:
+    - id: chat-timeline
+      name: dsh-chat-timeline
