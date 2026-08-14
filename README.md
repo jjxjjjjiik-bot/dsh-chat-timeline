@@ -1,103 +1,60 @@
 # dsh-chat-timeline
 
+[**English**](README.en.md) | 简体中文
+
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline/pulls)
 
-A [DeepSeek Harness](https://github.com/deepseek-ai/dsh) (DSH) plugin that brings
-the **official DeepSeek web app's right-side conversation scroll-navigation
-rail** to your DSH Web chat — a **1:1 port** of the ScrollNav UI/UX extracted
-from `chat.deepseek.com`'s shipped client.
+**1:1 复刻 DeepSeek 官网右侧「对话导航栏」**的 DeepSeek Harness (DSH) 插件——把 `chat.deepseek.com` 官方网页版的 ScrollNav 界面与交互原样带进你的 DSH Web 聊天界面。
 
-> **Not affiliated with, endorsed by, or sponsored by DeepSeek.**
-> This is an independent open-source project that recreates a public UI pattern.
+> 非 DeepSeek 官方出品，与 DeepSeek 无任何关联。
 
-## Features
+## 预览
 
-- **Always-visible right rail** — a slim fixed vertical rail (right side, center
-  height, blurred translucent backdrop); every user-sent message appears as one
-  small indicator line, exactly like the official app's collapsed state.
-- **Hover to expand** — hovering the rail reveals a panel (background layer +
-  shadow + border) whose items fade their message text in; 240px wide for
-  sessions with more than 8 user messages, otherwise width fits content.
-- **Reading-position highlight** — the item nearest your current reading
-  position is highlighted in the brand blue, tracking scroll in real time.
-- **Click to jump** — clicking an item smoothly scrolls the chat to that
-  message, loading older history on demand, and flashes the target row.
-- **Auto-hidden** — the rail disappears when the session has fewer than 2 user
-  messages.
-- **Accessible** — `role="navigation"`, ARIA labels, `aria-current`, and
-  `prefers-reduced-motion` support.
+<div align="center">
+  <img src="assets/screenshot-1.png" alt="右侧导航栏" width="45%"/>
+  <img src="assets/screenshot-2.png" alt="悬停展开面板" width="45%"/>
+</div>
 
-## How it works
+## 功能
 
-```
-User messages (session events)
-        │
-        ▼
-Host plane: "dshChatTimeline" session projection
-(durable enumeration of user turns: seq / time / preview / id)
-        │
-        ▼
-Web client: TimelineRail component
-(mounted in conversation.input.dock, portal-rendered to body)
-        │
-        ├─ fastest source first: projection → loaded chat nodes → background loadOlder loop
-        ├─ reading-position tracking on the conversation scrollport
-        └─ click → jumpToMessage() (loads older history if needed, smooth scroll, row flash)
-```
+- **常驻右侧导航轨**——屏幕右侧细长竖轨，每条用户消息一个指示线，与官网折叠态一致
+- **悬停展开**——面板显示消息预览，随滚动实时高亮当前阅读位置（品牌蓝）
+- **点击跳转**——一键平滑滚动到对应消息，自动加载更早历史
+- **自动隐藏**——会话少于 2 条用户消息时自动消失
+- **无障碍**——ARIA 标签 + 遵循系统「减弱动态效果」设置
 
-The host half registers a session projection unit (`dshChatTimeline`) that
-durably enumerates user-sent messages; the client half renders the rail and
-reconstructs each chat node's `data-chat-anchor-key` for jumping. Compaction
-deliberately keeps user messages in the transcript, so the timeline stays
-complete across long sessions.
+## 工作原理
 
-## Install (DSH web profile)
+Host 侧通过会话投影（`dshChatTimeline`）持久化枚举所有用户消息；客户端 `TimelineRail` 组件渲染导航轨（挂载于 `conversation.input.dock` 插槽，portal 到 body），数据源按速度优先：投影 → 已加载节点 → 后台 `loadOlder`。
 
-1. **Copy the plugin** into your profile directory, e.g.
-   `$DSH_HOME/profiles/web/plugins/dsh-chat-timeline/`
-   (`$DSH_HOME` is usually `~/.dsh`).
+## 安装
 
-2. **Declare the dependency** in `$DSH_HOME/profiles/web/package.json`:
-   ```json
-   "dsh-chat-timeline": "file:plugins/dsh-chat-timeline"
-   ```
-   Then run `pnpm install`.
+### 一键安装（Windows，推荐）
 
-3. **Compose it into the profile** in `$DSH_HOME/profiles/web/cordis.patch.yml`:
+1. 下载本项目（绿色 Code 按钮 → Download ZIP 解压，或 `git clone`）
+2. 双击 **`install.bat`** —— 脚本自动完成：复制插件 → 注册配置 → `pnpm install`
+3. 重启 `dsh web` 并刷新浏览器
+
+> 脚本可重复运行，不会重复安装。
+
+### 手动安装（其他平台）
+
+1. 将插件复制到 `$DSH_HOME/profiles/web/plugins/dsh-chat-timeline/`（`$DSH_HOME` 通常是 `~/.dsh`）
+2. 在 `profiles/web/package.json` 添加依赖 `"dsh-chat-timeline": "file:plugins/dsh-chat-timeline"`，运行 `pnpm install`
+3. 在 `profiles/web/cordis.patch.yml` 添加：
    ```yaml
    - insert:
        - id: chat-timeline
          name: dsh-chat-timeline
    ```
+4. 重启 `dsh web` 并刷新浏览器
 
-4. **Restart `dsh web`** and hard-refresh the browser.
+## 架构参考
 
-5. **Verify** — in any session with 2+ user messages, the right-side rail
-   appears; hover to expand, click an item to jump.
-
-## Architecture reference
-
-- Layout/CSS: 1:1 port of the DeepSeek web app's ScrollNav (extracted from the
-  shipped `main.css`), re-scoped under the `dsct_` prefix.
-- Plugin architecture: modeled on [asukasec/dsh-message-preview](https://github.com/asukasec/dsh-message-preview)
-  (MIT).
-
-## Implementation notes (for plugin developers)
-
-- Host half (`lib/index.js`): registers the `dshChatTimeline` session projection
-  — only **direct user-sent** messages (`user/message` with `source.kind ===
-  "user"`) shape the timeline; tool-injected context rows are excluded.
-- Client half (`lib/client.js`): exports `{ name, inject, apply }` plus the
-  `TimelineRail` component; injected into the `conversation.input.dock` slot,
-  portal-rendered to `document.body`.
-- Locale dictionaries (`zh` / `en`) are registered under the `chat-timeline`
-  namespace.
+- 布局/CSS：官网 ScrollNav 的 1:1 移植（提取自官方 `main.css`，以 `dsct_` 前缀命名空间化）
+- 插件架构：参考 [asukasec/dsh-message-preview](https://github.com/asukasec/dsh-message-preview)（MIT）
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
-
-**Trademark notice**: "DeepSeek" and the DeepSeek web app are trademarks of
-their respective owners. This project is not affiliated with DeepSeek; the
-recreated UI pattern is used for interoperability/parity purposes only.
+MIT — 见 [LICENSE](LICENSE)。"DeepSeek" 商标归其所有者所有，本项目与 DeepSeek 无关联。
