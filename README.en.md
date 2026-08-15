@@ -3,6 +3,7 @@
 English | [**简体中文**](README.md)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/dsh-chat-timeline.svg)](https://www.npmjs.com/package/dsh-chat-timeline)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline/pulls)
 
 A **1:1 port of the official DeepSeek web app's right-side conversation
@@ -39,7 +40,25 @@ body). Data sources, fastest first: projection → loaded chat nodes → backgro
 
 ## Install
 
-### One-click (Windows, recommended)
+### Method 1: DSH / NPM One-command install (Recommended)
+
+Run in your terminal (installs directly from npm and registers configuration):
+
+```bash
+dsh plugin --profile web add dsh-chat-timeline
+```
+
+Or:
+
+```bash
+dsh plugin add dsh-chat-timeline
+```
+
+After installation, restart `dsh web` and refresh your browser.
+
+---
+
+### Method 2: One-click script (Windows)
 
 1. Download this repo (green Code button → Download ZIP, or `git clone`)
 2. Double-click **`install.bat`** — the script copies the plugin, registers
@@ -48,7 +67,9 @@ body). Data sources, fastest first: projection → loaded chat nodes → backgro
 
 > The script is idempotent: re-running it won't re-install.
 
-### Manual (other platforms)
+---
+
+### Method 3: Manual install (other platforms or local development)
 
 1. Copy the plugin to `$DSH_HOME/profiles/web/plugins/dsh-chat-timeline/`
    (`$DSH_HOME` is usually `~/.dsh`)

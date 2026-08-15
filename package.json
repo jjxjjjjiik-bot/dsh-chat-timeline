@@ -20,6 +20,10 @@
   "bugs": {
     "url": "https://github.com/jjxjjjjiik-bot/dsh-chat-timeline/issues"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -29,7 +33,7 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "lib",
+    "lib/*.js",
     "cordis.patch.yml",
     "assets",
     "install.ps1",

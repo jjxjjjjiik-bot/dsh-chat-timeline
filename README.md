@@ -3,6 +3,7 @@
 [**English**](README.en.md) | 简体中文
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![npm version](https://img.shields.io/npm/v/dsh-chat-timeline.svg)](https://www.npmjs.com/package/dsh-chat-timeline)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline/pulls)
 
 **1:1 复刻 DeepSeek 官网右侧「对话导航栏」**的 DeepSeek Harness (DSH) 插件——把 `chat.deepseek.com` 官方网页版的 ScrollNav 界面与交互原样带进你的 DSH Web 聊天界面。
@@ -30,7 +31,25 @@ Host 侧通过会话投影（`dshChatTimeline`）持久化枚举所有用户消�
 
 ## 安装
 
-### 一键安装（Windows，推荐）
+### 方式一：DSH / NPM 一键安装（推荐，最简便）
+
+在终端中执行以下命令（自动从 npm 下载并配置）：
+
+```bash
+dsh plugin --profile web add dsh-chat-timeline
+```
+
+或者：
+
+```bash
+dsh plugin add dsh-chat-timeline
+```
+
+安装完成后，重启 `dsh web` 并刷新浏览器即可。
+
+---
+
+### 方式二：Windows 本地一键脚本（克隆/下载仓库）
 
 1. 下载本项目（绿色 Code 按钮 → Download ZIP 解压，或 `git clone`）
 2. 双击 **`install.bat`** —— 脚本自动完成：复制插件 → 注册配置 → `pnpm install`
@@ -38,7 +57,9 @@ Host 侧通过会话投影（`dshChatTimeline`）持久化枚举所有用户消�
 
 > 脚本可重复运行，不会重复安装。
 
-### 手动安装（其他平台）
+---
+
+### 方式三：手动安装（其他平台或本地开发）
 
 1. 将插件复制到 `$DSH_HOME/profiles/web/plugins/dsh-chat-timeline/`（`$DSH_HOME` 通常是 `~/.dsh`）
 2. 在 `profiles/web/package.json` 添加依赖 `"dsh-chat-timeline": "file:plugins/dsh-chat-timeline"`，运行 `pnpm install`
