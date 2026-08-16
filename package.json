@@ -1,6 +1,6 @@
 {
   "name": "dsh-chat-timeline",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DeepSeek 官网风格右侧消息时间线：常驻显示当前会话的用户消息卡片，悬停高亮、点击跳转到对应消息。",
   "keywords": [
     "deepseek",

@@ -24,9 +24,14 @@ Web chat.
 
 - **Always-visible right rail** — slim fixed vertical rail; every user-sent
   message appears as one indicator line, exactly like the official collapsed state
+- **Full light & dark theme adaptivity** — 1:1 pixel-perfect port of DeepSeek
+  official themes: crisp grey indicator lines and frosted white glass panel in light
+  mode, immersive dark theme in dark mode
 - **Hover to expand** — panel reveals message previews; the item nearest your
   reading position is highlighted in brand blue, tracking scroll in real time
 - **Click to jump** — smooth-scrolls to the message, loading older history on demand
+- **Dynamic workbench avoidance** — detects right-side workbenches or sidebars
+  (e.g., aionui) and automatically shifts to align with the conversation scrollport
 - **Auto-hidden** — disappears when the session has fewer than 2 user messages
 - **Accessible** — ARIA labels + `prefers-reduced-motion` support
 
