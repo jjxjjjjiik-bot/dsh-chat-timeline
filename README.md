@@ -4,7 +4,10 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![npm version](https://img.shields.io/npm/v/dsh-chat-timeline.svg)](https://www.npmjs.com/package/dsh-chat-timeline)
+[![GitHub stars](https://img.shields.io/github/stars/jjxjjjjiik-bot/dsh-chat-timeline?style=social)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline/pulls)
+
+> ⭐️ **如果这个小插件帮到了你，请给本项目点一个免费的 [Star](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline) 支持一下！** 你的鼓励是持续通宵优化更新的最大动力～
 
 **1:1 复刻 DeepSeek 官网右侧「对话导航栏」**的 DeepSeek Harness (DSH) 插件——把 `chat.deepseek.com` 官方网页版的 ScrollNav 界面与交互原样带进你的 DSH Web 聊天界面。
 

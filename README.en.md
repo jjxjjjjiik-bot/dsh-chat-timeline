@@ -4,7 +4,10 @@ English | [**简体中文**](README.md)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![npm version](https://img.shields.io/npm/v/dsh-chat-timeline.svg)](https://www.npmjs.com/package/dsh-chat-timeline)
+[![GitHub stars](https://img.shields.io/github/stars/jjxjjjjiik-bot/dsh-chat-timeline?style=social)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline/pulls)
+
+> ⭐️ **If you find this plugin helpful, please consider giving it a free [Star](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline)!** Your support is the greatest motivation for continuous maintenance~
 
 A **1:1 port of the official DeepSeek web app's right-side conversation
 navigation rail (ScrollNav)** as a DeepSeek Harness (DSH) plugin — the exact

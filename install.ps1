@@ -1,4 +1,4 @@
-﻿<#
+<#
 dsh-chat-timeline 一键安装脚本（One-click installer）
 【中文】自动完成全部安装步骤：复制源码 → 注册到 package.json → pnpm install → 提示重启。
 (EN) Automates the whole install: copy source -> register in package.json -> pnpm install -> restart hint.
@@ -81,7 +81,10 @@ try {
 }
 
 Write-Host ""
-Write-Host "================ 安装完成 ================"
+Write-Host "================ 安装完成 ================" -ForegroundColor Green
 Write-Host "  请重启 dsh web 并刷新浏览器，"
 Write-Host "  右侧导航栏即可在任意会话中出现。"
+Write-Host ""
+Write-Host "  ⭐ 如果觉得好用，求给项目点个 Star 支持一下作者：" -ForegroundColor Yellow
+Write-Host "     https://github.com/jjxjjjjiik-bot/dsh-chat-timeline" -ForegroundColor Cyan
 Write-Host "=========================================="
