@@ -36,6 +36,8 @@ Web chat.
 - **Dynamic workbench avoidance** — detects right-side workbenches or sidebars
   (e.g., aionui) and automatically shifts to align with the conversation scrollport
 - **Auto-hidden** — disappears when the session has fewer than 2 user messages
+- **Mobile adaptation** — auto-hidden at viewport width ≤ 767px so it never
+  occludes the conversation on phones; restores automatically on rotate/resize
 - **Accessible** — ARIA labels + `prefers-reduced-motion` support
 
 ## How it works
