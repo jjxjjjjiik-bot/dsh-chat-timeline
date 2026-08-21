@@ -33,6 +33,8 @@ Web chat.
 - **Hover to expand** — panel reveals message previews; the item nearest your
   reading position is highlighted in brand blue, tracking scroll in real time
 - **Click to jump** — smooth-scrolls to the message, loading older history on demand
+- **Key-point bookmarks** — hover to expand, then click the ★ beside a message to mark it as a key point; marked items keep a gold indicator line in the collapsed rail
+- **Marked-only filter** — the “★ Marked only (n)” button at the top of the panel filters to bookmarked nodes for one-click jumps; bookmarks are stored per session in localStorage
 - **Dynamic workbench avoidance** — detects right-side workbenches or sidebars
   (e.g., aionui) and automatically shifts to align with the conversation scrollport
 - **Auto-hidden** — disappears when the session has fewer than 2 user messages
