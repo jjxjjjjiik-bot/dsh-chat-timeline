@@ -3,11 +3,12 @@
 [**English**](README.en.md) | 简体中文
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![npm version](https://img.shields.io/npm/v/dsh-chat-timeline.svg)](https://www.npmjs.com/package/dsh-chat-timeline)
-[![GitHub stars](https://img.shields.io/github/stars/jjxjjjjiik-bot/dsh-chat-timeline?style=social)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline/pulls)
+[![GitHub stars](https://img.shields.io/github/stars/dwb-ajay/dsh-chat-timeline?style=social)](https://github.com/dwb-ajay/dsh-chat-timeline)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/dwb-ajay/dsh-chat-timeline/pulls)
 
-> ⭐️ **如果这个小插件帮到了你，请给本项目点一个免费的 [Star](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline) 支持一下！** 你的鼓励是持续通宵优化更新的最大动力～
+> Fork of [jjxjjjjiik-bot/dsh-chat-timeline](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline) with **dsh-rewind** compatibility.
+>
+> ⭐️ **如果这个小插件帮到了你，请给本项目点一个免费的 [Star](https://github.com/dwb-ajay/dsh-chat-timeline) 支持一下！**
 
 **1:1 复刻 DeepSeek 官网右侧「对话导航栏」**的 DeepSeek Harness (DSH) 插件——把 `chat.deepseek.com` 官方网页版的 ScrollNav 界面与交互原样带进你的 DSH Web 聊天界面。
 
@@ -30,25 +31,27 @@
 - **自动隐藏**——会话少于 2 条用户消息时自动隐藏
 - **移动端适配**——视口宽度 ≤ 767px 时自动隐藏，避免在手机上遮挡对话内容；旋转/拉伸窗口后自动恢复
 - **无障碍**——ARIA 标签 + 遵循系统「减弱动态效果」设置
+- **兼容 dsh-rewind**——对话回退后，侧栏同步隐藏被撤回的用户消息（不再残留“幽灵”条目）
 
 ## 工作原理
 
 Host 侧通过会话投影（`dshChatTimeline`）持久化枚举所有用户消息；客户端 `TimelineRail` 组件渲染导航轨（挂载于 `conversation.input.dock` 插槽，portal 到 body），数据源按速度优先：投影 → 已加载节点 → 后台 `loadOlder`。
 
+本 fork（`dwb-ajay/dsh-chat-timeline`）在上游基础上修复了与 `dsh-rewind-plugin` 的不同步：surface replace / rewind 隐藏范围会从时间线索引与侧栏渲染中剔除。
+
 ## 安装
 
-### 方式一：DSH / NPM 一键安装（推荐，最简便）
-
-在终端中执行以下命令（自动从 npm 下载并配置）：
+### 方式一：从本 fork 安装（推荐）
 
 ```bash
-dsh plugin --profile web add dsh-chat-timeline
+dsh plugin --profile web add github:dwb-ajay/dsh-chat-timeline
 ```
 
-或者：
+若你本地已装上游 `dsh-chat-timeline`，先移除再装本 fork，避免重复轨：
 
 ```bash
-dsh plugin add dsh-chat-timeline
+dsh plugin --profile web remove dsh-chat-timeline
+dsh plugin --profile web add github:dwb-ajay/dsh-chat-timeline
 ```
 
 安装完成后，重启 `dsh web` 并刷新浏览器即可。

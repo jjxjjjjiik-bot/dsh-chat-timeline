@@ -3,11 +3,12 @@
 English | [**简体中文**](README.md)
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![npm version](https://img.shields.io/npm/v/dsh-chat-timeline.svg)](https://www.npmjs.com/package/dsh-chat-timeline)
-[![GitHub stars](https://img.shields.io/github/stars/jjxjjjjiik-bot/dsh-chat-timeline?style=social)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline/pulls)
+[![GitHub stars](https://img.shields.io/github/stars/dwb-ajay/dsh-chat-timeline?style=social)](https://github.com/dwb-ajay/dsh-chat-timeline)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/dwb-ajay/dsh-chat-timeline/pulls)
 
-> ⭐️ **If you find this plugin helpful, please consider giving it a free [Star](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline)!** Your support is the greatest motivation for continuous maintenance~
+> Fork of [jjxjjjjiik-bot/dsh-chat-timeline](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline) with **dsh-rewind** compatibility.
+>
+> ⭐️ **If you find this plugin helpful, please consider giving it a free [Star](https://github.com/dwb-ajay/dsh-chat-timeline)!**
 
 A **1:1 port of the official DeepSeek web app's right-side conversation
 navigation rail (ScrollNav)** as a DeepSeek Harness (DSH) plugin — the exact
@@ -39,6 +40,8 @@ Web chat.
 - **Mobile adaptation** — auto-hidden at viewport width ≤ 767px so it never
   occludes the conversation on phones; restores automatically on rotate/resize
 - **Accessible** — ARIA labels + `prefers-reduced-motion` support
+- **dsh-rewind compatible** — after a conversation rewind, the rail drops the
+  withdrawn user messages instead of leaving stale entries
 
 ## How it works
 
@@ -48,14 +51,24 @@ component (mounted in the `conversation.input.dock` slot, portal-rendered to
 body). Data sources, fastest first: projection → loaded chat nodes → background
 `loadOlder` loop.
 
+This fork (`dwb-ajay/dsh-chat-timeline`) adds rewind interoperability on top of
+upstream: surface-replace / rewind hide ranges are removed from the timeline
+index and from the rail render path.
+
 ## Install
 
-### Method 1: DSH / NPM One-command install (Recommended)
-
-Run in your terminal (installs directly from npm and registers configuration):
+### Method 1: Install from this fork (Recommended)
 
 ```bash
-dsh plugin --profile web add dsh-chat-timeline
+dsh plugin --profile web add github:dwb-ajay/dsh-chat-timeline
+```
+
+If you already have upstream `dsh-chat-timeline`, remove it first to avoid a
+duplicate rail:
+
+```bash
+dsh plugin --profile web remove dsh-chat-timeline
+dsh plugin --profile web add github:dwb-ajay/dsh-chat-timeline
 ```
 
 Or:

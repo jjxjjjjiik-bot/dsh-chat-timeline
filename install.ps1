@@ -86,5 +86,5 @@ Write-Host "  请重启 dsh web 并刷新浏览器，"
 Write-Host "  右侧导航栏即可在任意会话中出现。"
 Write-Host ""
 Write-Host "  ⭐ 如果觉得好用，求给项目点个 Star 支持一下作者：" -ForegroundColor Yellow
-Write-Host "     https://github.com/jjxjjjjiik-bot/dsh-chat-timeline" -ForegroundColor Cyan
+Write-Host "     https://github.com/dwb-ajay/dsh-chat-timeline" -ForegroundColor Cyan
 Write-Host "=========================================="
