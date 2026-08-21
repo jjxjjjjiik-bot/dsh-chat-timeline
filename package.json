@@ -1,7 +1,7 @@
 {
   "name": "dsh-chat-timeline",
   "version": "0.1.4",
-  "description": "DeepSeek 官网风格右侧消息时间线：常驻显示当前会话的用户消息卡片，悬停高亮、点击跳转到对应消息。兼容 dsh-rewind（回退后侧栏同步隐藏）。",
+  "description": "DeepSeek-style right-side chat timeline for DSH, with dsh-rewind support (withdrawn messages leave the rail).",
   "keywords": [
     "deepseek",
     "harness",
