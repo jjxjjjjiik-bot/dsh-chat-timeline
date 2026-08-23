@@ -1,7 +1,7 @@
 {
   "name": "dsh-chat-timeline",
-  "version": "0.1.3",
-  "description": "DeepSeek 官网风格右侧消息时间线：常驻显示当前会话的用户消息卡片，悬停高亮、点击跳转到对应消息。",
+  "version": "0.1.4",
+  "description": "DeepSeek 官网风格右侧消息时间线：常驻显示当前会话的用户消息卡片，悬停高亮、重点标记、平滑跳转与回退联动。",
   "keywords": [
     "deepseek",
     "harness",
@@ -9,9 +9,18 @@
     "dsh-plugin",
     "conversation",
     "navigation",
-    "timeline"
+    "timeline",
+    "bookmarks",
+    "rewind"
   ],
   "author": "jjxjjjjiik-bot",
+  "contributors": [
+    "NIU-001-LIU",
+    "dwb-ajay",
+    "YuYangOUC",
+    "mill413",
+    "RoyougiShiki"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jjxjjjjiik-bot/dsh-chat-timeline.git"

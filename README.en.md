@@ -9,10 +9,7 @@ English | [**简体中文**](README.md)
 
 > ⭐️ **If you find this plugin helpful, please consider giving it a free [Star](https://github.com/jjxjjjjiik-bot/dsh-chat-timeline)!** Your support is the greatest motivation for continuous maintenance~
 
-A **1:1 port of the official DeepSeek web app's right-side conversation
-navigation rail (ScrollNav)** as a DeepSeek Harness (DSH) plugin — the exact
-ScrollNav UI/UX from `chat.deepseek.com`'s shipped client, brought to your DSH
-Web chat.
+A **1:1 port and enhancement of the official DeepSeek web app's right-side conversation navigation rail (ScrollNav)** as a DeepSeek Harness (DSH) plugin — the exact ScrollNav UI/UX from `chat.deepseek.com`'s shipped client, brought to your DSH Web chat with key-point bookmarking and rewind integration.
 
 > Not affiliated with, endorsed by, or sponsored by DeepSeek.
 
@@ -25,28 +22,18 @@ Web chat.
 
 ## Features
 
-- **Always-visible right rail** — slim fixed vertical rail; every user-sent
-  message appears as one indicator line, exactly like the official collapsed state
-- **Full light & dark theme adaptivity** — 1:1 pixel-perfect port of DeepSeek
-  official themes: crisp grey indicator lines and frosted white glass panel in light
-  mode, immersive dark theme in dark mode
-- **Hover to expand** — panel reveals message previews; the item nearest your
-  reading position is highlighted in brand blue, tracking scroll in real time
-- **Click to jump** — smooth-scrolls to the message, loading older history on demand
-- **Dynamic workbench avoidance** — detects right-side workbenches or sidebars
-  (e.g., aionui) and automatically shifts to align with the conversation scrollport
-- **Auto-hidden** — disappears when the session has fewer than 2 user messages
-- **Mobile adaptation** — auto-hidden at viewport width ≤ 767px so it never
-  occludes the conversation on phones; restores automatically on rotate/resize
-- **Accessible** — ARIA labels + `prefers-reduced-motion` support
+- **Always-visible right rail** — slim fixed vertical rail; every user-sent message appears as one indicator line, exactly matching the official collapsed state
+- **⭐ Key-point Bookmarks & Filter** — star important message turns with `★`; marked items highlight with **golden indicator lines** in the collapsed rail; one-click "★ Marked only (n)" header filter; auto-persisted via `localStorage`
+- **Full light & dark theme adaptivity** — 1:1 pixel-perfect port of DeepSeek official themes: crisp grey indicator lines and frosted white glass panel in light mode, immersive dark theme with high-contrast amber/gold indicators in dark mode
+- **✨ Smooth Jump Stabilization** — click to jump smoothly to any message (loads older history on demand); smart scroll-freeze guard completely eliminates timeline panel jitter during long-distance jumps
+- **🔄 Rewind Integration** — deeply integrated with `dsh-rewind`; withdrawn messages are automatically removed from the timeline projection and view
+- **Dynamic workbench avoidance** — detects right-side workbenches or sidebars (e.g., aionui) and automatically shifts to align with the conversation scrollport
+- **Auto-hidden & Narrow Viewport Guard** — disappears when the session has fewer than 2 user messages; automatically hides when viewport width ≤ 767px (mobile / narrow windows)
+- **Accessible** — comprehensive ARIA labels + keyboard navigation (Enter/Space) + `prefers-reduced-motion` compliance
 
 ## How it works
 
-The host half registers the `dshChatTimeline` session projection that durably
-enumerates all user-sent messages; the client half renders the `TimelineRail`
-component (mounted in the `conversation.input.dock` slot, portal-rendered to
-body). Data sources, fastest first: projection → loaded chat nodes → background
-`loadOlder` loop.
+The host half registers the `dshChatTimeline` session projection that durably enumerates all user-sent messages (supporting surface replace cuts for rewind); the client half renders the `TimelineRail` component (mounted in the `conversation.input.dock` slot, portal-rendered to body). Data sources, fastest first: projection → loaded chat nodes → background `loadOlder` loop.
 
 ## Install
 
@@ -71,8 +58,7 @@ After installation, restart `dsh web` and refresh your browser.
 ### Method 2: One-click script (Windows)
 
 1. Download this repo (green Code button → Download ZIP, or `git clone`)
-2. Double-click **`install.bat`** — the script copies the plugin, registers
-   the config, and runs `pnpm install` automatically
+2. Double-click **`install.bat`** — the script copies the plugin, registers the config, and runs `pnpm install` automatically
 3. Restart `dsh web` and refresh the browser
 
 > The script is idempotent: re-running it won't re-install.
@@ -81,10 +67,8 @@ After installation, restart `dsh web` and refresh your browser.
 
 ### Method 3: Manual install (other platforms or local development)
 
-1. Copy the plugin to `$DSH_HOME/profiles/web/plugins/dsh-chat-timeline/`
-   (`$DSH_HOME` is usually `~/.dsh`)
-2. Add `"dsh-chat-timeline": "file:plugins/dsh-chat-timeline"` to
-   `profiles/web/package.json`, then run `pnpm install`
+1. Copy the plugin to `$DSH_HOME/profiles/web/plugins/dsh-chat-timeline/` (`$DSH_HOME` is usually `~/.dsh`)
+2. Add `"dsh-chat-timeline": "file:plugins/dsh-chat-timeline"` to `profiles/web/package.json`, then run `pnpm install`
 3. Add to `profiles/web/cordis.patch.yml`:
    ```yaml
    - insert:
@@ -95,11 +79,9 @@ After installation, restart `dsh web` and refresh your browser.
 
 ## Architecture reference
 
-- Layout/CSS: 1:1 port of the official ScrollNav (extracted from the shipped
-  `main.css`), re-scoped under the `dsct_` prefix
+- Layout/CSS: 1:1 port of the official ScrollNav (extracted from the shipped `main.css`), re-scoped under the `dsct_` prefix
 - Plugin architecture: modeled on [asukasec/dsh-message-preview](https://github.com/asukasec/dsh-message-preview) (MIT)
 
 ## License
 
-MIT — see [LICENSE](LICENSE). "DeepSeek" is a trademark of its owner; this
-project is not affiliated with DeepSeek.
+MIT — see [LICENSE](LICENSE). "DeepSeek" is a trademark of its owner; this project is not affiliated with DeepSeek.
