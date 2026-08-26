@@ -22,11 +22,11 @@ A **1:1 port and enhancement of the official DeepSeek web app's right-side conve
 
 ## Features
 
-- **Always-visible right rail** — slim fixed vertical rail; every user-sent message appears as one indicator line, exactly matching the official collapsed state
-- **⭐ Key-point Bookmarks & Filter** — star important message turns with `★`; marked items highlight with **golden indicator lines** in the collapsed rail; one-click "★ Marked only (n)" header filter; auto-persisted via `localStorage`
+- **Always-visible right rail** — slim fixed vertical rail; every user-sent message appears as one indicator line, cleanly collapsed without clutter to match the official look 1:1
+- **⭐ Key-point Bookmarks & Filter** — star important message turns with `★`; marked items highlight with **golden indicator lines** in the collapsed rail; one-click "★ Marked only (n)" header filter in the expanded panel; auto-persisted via `localStorage`
 - **Full light & dark theme adaptivity** — 1:1 pixel-perfect port of DeepSeek official themes: crisp grey indicator lines and frosted white glass panel in light mode, immersive dark theme with high-contrast amber/gold indicators in dark mode
 - **✨ Smooth Jump Stabilization** — click to jump smoothly to any message (loads older history on demand); smart scroll-freeze guard completely eliminates timeline panel jitter during long-distance jumps
-- **🔄 Rewind Integration** — deeply integrated with `dsh-rewind`; withdrawn messages are automatically removed from the timeline projection and view
+- **🔄 Rewind Integration** — deeply integrated with `dsh-rewind` via multi-layered parsing; withdrawn/rewound messages are robustly filtered out from both host projections and client views across localized outcome formats
 - **Dynamic workbench avoidance** — detects right-side workbenches or sidebars (e.g., aionui) and automatically shifts to align with the conversation scrollport
 - **Auto-hidden & Narrow Viewport Guard** — disappears when the session has fewer than 2 user messages; automatically hides when viewport width ≤ 767px (mobile / narrow windows)
 - **Accessible** — comprehensive ARIA labels + keyboard navigation (Enter/Space) + `prefers-reduced-motion` compliance
